@@ -12,20 +12,38 @@ public enum EUIType
 
 public class UIManager : Singleton<UIManager>
 {
+    public Canvas canvas;
     public List<UIBase> uiList;
-    private void LoadUI()
+
+    protected override void Awake()
+    {
+        base.Awake();
+        canvas = FindObjectOfType<Canvas>();
+        LoadUI();
+    }
+
+    public void LoadUI()
     {
         uiList = new List<UIBase>();
         
         for(int i = 0; i < (int)EUIType.End; i++)
         {
-            //ResourceManager.Instance.LoadResource(((EUIType)i).ToString(), "Prefab/UI");
-            //uiList.Add();
+            GameObject res = ResourceManager.Instance.LoadResource(((EUIType)i).ToString(), "Prefab/UI");
+            if (res == null) return;
+
+            GameObject go = Instantiate(res);
+            go.GetComponent<RectTransform>().SetParent(canvas.transform, false);
+
+            UIBase ui = go.GetComponent<UIBase>();
+            go.SetActive(ui.IsInitActive);
+            uiList.Add(ui);
         }
     }
 
-    public void Show(EUIType type)
+    public void Show(EUIType type, params object[] contexts)
     {
-
+        UIBase ui = uiList[(int)type];
+        ui.gameObject.SetActive(true);
+        ui.Open(contexts);
     }
 }
