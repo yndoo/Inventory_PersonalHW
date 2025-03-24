@@ -11,9 +11,9 @@ public class ItemData : ScriptableObject
     public Sprite Icon;
     public int Quantity;
 
-    public ConsumableType[] Consumables;
+    public EquipableStat[] Equipables;
 }
-public enum ConsumableType
+public enum StatusType
 {
     Attack,
     Defense,
@@ -23,8 +23,8 @@ public enum ConsumableType
 }
 
 [Serializable]
-public class ItemDataConsumable
+public class EquipableStat
 {
-    public ConsumableType type;
+    public StatusType type;
     public float value;
 }

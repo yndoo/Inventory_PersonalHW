@@ -53,8 +53,8 @@ public class UIManager : Singleton<UIManager>
         ui.gameObject.SetActive(false);
     }
 
-    public T GetUI<T>(EUIType type) where T : UIBase
+    public UIBase GetUI(EUIType type) 
     {
-        return uiList[(int)type] as T;
+        return uiList[(int)type];
     }
 }

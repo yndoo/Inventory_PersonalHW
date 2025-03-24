@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
             if(origin != null )
             {
                 Player = Instantiate(origin).GetComponent<Player>();
-            }
+            }    
         }
     }
 }

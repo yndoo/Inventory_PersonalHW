@@ -10,7 +10,10 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public ItemData Item;
     public GameObject EquipCheckMark;
     public Button SlotBtn;
+    public InventoryUI Inventory;
 
+    public int indexId = -1;
+    public bool isEquiped = false;
 
     private void Start()
     {
@@ -19,7 +22,16 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void OnClickSlot()
     {
-        // TODO : 클릭 시 장착하기
+        isEquiped = !isEquiped;
+        EquipCheckMark.SetActive(isEquiped);
+        if(isEquiped)
+        {
+            Equip();
+        }
+        else
+        {
+            UnEquip();
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -32,5 +44,27 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         // TODO : 정보창 닫기
         Debug.Log("마우스 나감");
+    }
+
+    void Equip()
+    {
+        if (Inventory.slots[Inventory.CurEquipIndex].isEquiped) // 현재 장착템 해제
+        {
+            Inventory.slots[Inventory.CurEquipIndex].UnEquip();
+        }
+        Inventory.CurEquipIndex = indexId;
+        foreach(EquipableStat addStat in Item.Equipables)
+        {
+            GameManager.Instance.Player.Stat.ApplyStat(addStat);
+        }
+    }
+
+    void UnEquip()
+    {
+        Inventory.CurEquipIndex = -1;
+        foreach (EquipableStat addStat in Item.Equipables)
+        {
+            GameManager.Instance.Player.Stat.UnApplyStat(addStat);
+        }
     }
 }

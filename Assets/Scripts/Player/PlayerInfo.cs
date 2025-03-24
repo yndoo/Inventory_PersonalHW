@@ -11,6 +11,14 @@ public class PlayerInfo
     public float CurExp;
     public float MaxExp = 10;
 
+    public PlayerInfo(string name, int level, float curExp, float maxExp)
+    {
+        Name = name;
+        Level = level;
+        CurExp = curExp;
+        MaxExp = maxExp;
+    }
+
     public void AddExp(float amount)
     {
         CurExp += amount;
@@ -20,7 +28,7 @@ public class PlayerInfo
             CurExp %= MaxExp;
         }
 
-        UIManager.Instance.GetUI<UserInfo>(EUIType.UserInfoUI).UpdateLevelUI(Level.ToString(), CurExp, MaxExp);
+        (UIManager.Instance.GetUI(EUIType.UserInfoUI) as UserInfo).UpdateLevelUI(Level.ToString(), CurExp, MaxExp);
     }
 }
 
