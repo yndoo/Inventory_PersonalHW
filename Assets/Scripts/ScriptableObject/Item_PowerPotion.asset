@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_PowerPotion
   m_EditorClassIdentifier: 
   ItemName: Red Potion
-  ItemDescription: Power Potion
+  ItemDescription: 'Power Up : Attack and Critical Rate'
   Icon: {fileID: 1436879699, guid: a7fab37a3b54ccf4d924922c1a611206, type: 3}
   Material: {fileID: 2100000, guid: 86bba7b763e75a14085a096509ffa344, type: 2}
   Equipables:
