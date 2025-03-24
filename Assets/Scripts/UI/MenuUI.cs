@@ -8,7 +8,7 @@ public class MenuUI : UIBase
     public Button StatusBtn;
     public Button InventoryBtn;
 
-    private void Start()
+    public override void Init()
     {
         StatusBtn.onClick.AddListener(OnStatus);
         InventoryBtn.onClick.AddListener(OnInventory);
@@ -29,4 +29,5 @@ public class MenuUI : UIBase
         Debug.Log("Inventory ¿­±â");
         UIManager.Instance.Show(EUIType.GameUI, false, true);
     }
+
 }

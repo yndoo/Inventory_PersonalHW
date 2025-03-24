@@ -12,6 +12,12 @@ public class UserInfo : UIBase
     public TextMeshProUGUI ExpText;
     public Image ExpFill;
 
+    public override void Init()
+    {
+        PlayerInfo p = GameManager.Instance.Player.Info;
+        Open(p.Name, p.Level, p.CurExp, p.MaxExp);
+    }
+
     /// <param name="contexts">UserName, Level, CurExp, MaxExp</param>
     public override void Open(params object[] contexts)
     {
@@ -39,5 +45,4 @@ public class UserInfo : UIBase
         ExpFill.fillAmount = exp / maxExp;
         ExpText.text = $"{exp.ToString()} / {maxExp.ToString()}";
     }
-
 }

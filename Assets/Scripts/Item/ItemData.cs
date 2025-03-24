@@ -8,8 +8,10 @@ public class ItemData : ScriptableObject
 {
     [Header("Info")]
     public string ItemName;
+    public string ItemDescription;
     public Sprite Icon;
-    public int Quantity;
+
+    public Material Material;
 
     public EquipableStat[] Equipables;
 }

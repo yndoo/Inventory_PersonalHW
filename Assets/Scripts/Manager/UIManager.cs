@@ -18,13 +18,16 @@ public class UIManager : Singleton<UIManager>
     protected override void Awake()
     {
         base.Awake();
-        canvas = FindObjectOfType<Canvas>();
-        LoadUI();
+        if (uiList == null) LoadUI();
     }
 
     public void LoadUI()
     {
         uiList = new List<UIBase>();
+        if(canvas == null)
+        {
+            canvas = FindObjectOfType<Canvas>();
+        }
         
         for(int i = 0; i < (int)EUIType.End; i++)
         {
@@ -35,6 +38,7 @@ public class UIManager : Singleton<UIManager>
             go.GetComponent<RectTransform>().SetParent(canvas.transform, false);
 
             UIBase ui = go.GetComponent<UIBase>();
+            ui.Init();
             go.SetActive(ui.IsInitActive);
             uiList.Add(ui);
         }
@@ -56,5 +60,10 @@ public class UIManager : Singleton<UIManager>
     public UIBase GetUI(EUIType type) 
     {
         return uiList[(int)type];
+    }
+
+    public T GetUI<T>(EUIType type) where T : UIBase 
+    {
+        return uiList[(int)type] as T;
     }
 }

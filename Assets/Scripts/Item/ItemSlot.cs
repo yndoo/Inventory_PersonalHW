@@ -9,22 +9,21 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public ItemData Item;
     public GameObject EquipCheckMark;
+    public Image Icon;
     public Button SlotBtn;
     public InventoryUI Inventory;
 
-    public int indexId = -1;
-    public bool isEquiped = false;
+    public int indexId = -1; // 슬롯 번호
+    public bool isEquiped = false; // 현재 슬롯 아이템을 장착했는지 
 
     private void Start()
     {
         SlotBtn.onClick.AddListener(OnClickSlot);
     }
 
-    void OnClickSlot()
+    void OnClickSlot() // 토글
     {
-        isEquiped = !isEquiped;
-        EquipCheckMark.SetActive(isEquiped);
-        if(isEquiped)
+        if(!isEquiped)
         {
             Equip();
         }
@@ -32,6 +31,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             UnEquip();
         }
+
+        EquipCheckMark.SetActive(isEquiped);
+        UIManager.Instance.GetUI<GameUI>(EUIType.GameUI).GetComponentInChildren<StatusUI>(true).UpdateUI();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -48,23 +50,36 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void Equip()
     {
-        if (Inventory.slots[Inventory.CurEquipIndex].isEquiped) // 현재 장착템 해제
+        if (Inventory.CurEquipIndex >= 0 && Inventory.slots[Inventory.CurEquipIndex] != null && Inventory.slots[Inventory.CurEquipIndex].isEquiped) // 현재 장착템 해제
         {
             Inventory.slots[Inventory.CurEquipIndex].UnEquip();
         }
+        Inventory.slots[indexId].isEquiped = true;
         Inventory.CurEquipIndex = indexId;
-        foreach(EquipableStat addStat in Item.Equipables)
+        Player p = GameManager.Instance.Player;
+        foreach (EquipableStat addStat in Item.Equipables)
         {
-            GameManager.Instance.Player.Stat.ApplyStat(addStat);
+            p.Stat.ApplyStat(addStat);
         }
+        p.HairMeshRenderer.material = Item.Material;
     }
 
     void UnEquip()
     {
+        isEquiped = false;
+        EquipCheckMark.SetActive(false);
         Inventory.CurEquipIndex = -1;
+        Player p = GameManager.Instance.Player;
         foreach (EquipableStat addStat in Item.Equipables)
         {
             GameManager.Instance.Player.Stat.UnApplyStat(addStat);
         }
+        p.HairMeshRenderer.material = p.OriginalMat;
+    }
+
+    public void SetSlot(ItemData newData)
+    {
+        Item = newData;
+        Icon.sprite = newData.Icon;
     }
 }

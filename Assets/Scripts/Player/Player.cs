@@ -7,17 +7,22 @@ public class Player : MonoBehaviour
 {
     public PlayerInfo Info;
     public PlayerStat Stat;
-    public ItemData CurItemData;
+    public InventoryUI Inventory;
+    public MeshRenderer HairMeshRenderer;
+    public Material OriginalMat;
+
+    private Rigidbody _rigidbody;
 
     private void Awake()
     {
         Info = new PlayerInfo("Mandoo", 1, 0f, 10f);
         Stat = new PlayerStat(50, 10, 100, 0, 10);
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
-    void Start()
+    private void FixedUpdate()
     {
-        UIManager.Instance.Show(EUIType.UserInfoUI, Info.Name, Info.Level, Info.CurExp, Info.MaxExp);   
+        _rigidbody.velocity += transform.forward * 0.5f;
     }
 }
 

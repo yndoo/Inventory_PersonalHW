@@ -25,4 +25,9 @@ public class GameUI : UIBase
     {
         UIManager.Instance.Hide(EUIType.GameUI);
     }
+
+    public override void Init()
+    {
+        InventoryUI.InitInventory();
+    }
 }

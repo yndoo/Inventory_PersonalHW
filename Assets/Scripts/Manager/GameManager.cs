@@ -6,8 +6,9 @@ public class GameManager : Singleton<GameManager>
 {
     public Player Player;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         if(Player == null)
         {
             GameObject origin = ResourceManager.Instance.LoadResource("Player", "Prefab");
@@ -16,5 +17,10 @@ public class GameManager : Singleton<GameManager>
                 Player = Instantiate(origin).GetComponent<Player>();
             }    
         }
+    }
+
+    private void Start()
+    {
+        UIManager.Instance.LoadUI();
     }
 }

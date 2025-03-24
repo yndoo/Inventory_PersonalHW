@@ -28,7 +28,7 @@ public class PlayerInfo
             CurExp %= MaxExp;
         }
 
-        (UIManager.Instance.GetUI(EUIType.UserInfoUI) as UserInfo).UpdateLevelUI(Level.ToString(), CurExp, MaxExp);
+        UIManager.Instance.GetUI<UserInfo>(EUIType.UserInfoUI).UpdateLevelUI(Level.ToString(), CurExp, MaxExp);
     }
 }
 
