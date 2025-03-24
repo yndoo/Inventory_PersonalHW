@@ -56,6 +56,8 @@ MonoBehaviour:
   Inventory: {fileID: 0}
   HairMeshRenderer: {fileID: 3503804321821194643}
   OriginalMat: {fileID: 2100000, guid: f0841c9f7b4aa414d96700fa6b253f11, type: 2}
+  Agent: {fileID: 0}
+  HasItem: 0
 --- !u!54 &4562553643801508881
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -93,7 +95,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

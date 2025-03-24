@@ -15,6 +15,9 @@ public class InventoryUI : MonoBehaviour
     public GameObject ItemDescObj;
     private TextMeshProUGUI[] ItemDescTexts;
 
+    // 아이템 먹기 성공 여부 바꿈 용도
+    Coroutine EatItemCoroutine;
+
     public void InitInventory()
     {
         GameManager.Instance.Player.Inventory = this;
@@ -35,7 +38,16 @@ public class InventoryUI : MonoBehaviour
 
     public bool AddItem(ItemData addItem)
     {
-        if(LastItemIndex + 1 >= slots.Count)
+        // State에 아이템 먹었는지 알려주는 용도
+        GameManager.Instance.Player.HasItem = true;
+        if(EatItemCoroutine != null)
+        {
+            StopCoroutine(EatItemCoroutine);
+        }
+        EatItemCoroutine = StartCoroutine(HasItemOff());
+
+        // 아이템 추가 로직
+        if (LastItemIndex + 1 >= slots.Count)
         {
             return false;
         }
@@ -54,5 +66,11 @@ public class InventoryUI : MonoBehaviour
     public void OffItemDesc()
     {
         ItemDescObj.SetActive(false);
+    }
+
+    IEnumerator HasItemOff()
+    {
+        yield return null;
+        GameManager.Instance.Player.HasItem = false;
     }
 }

@@ -15,8 +15,11 @@ public class Player : MonoBehaviour, IPointerEnterHandler
 
     public PlayerStateMachine playerStateMachine;
 
-    private NavMeshAgent _agent;
+    public NavMeshAgent Agent;
     private Rigidbody _rigidbody;
+
+    // 아이템 먹기 성공 체크
+    public bool HasItem = false;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -29,7 +32,7 @@ public class Player : MonoBehaviour, IPointerEnterHandler
         Stat = new PlayerStat(50, 10, 100, 0, 10);
         playerStateMachine = new PlayerStateMachine(this);
         _rigidbody = GetComponent<Rigidbody>();
-        _agent = GetComponent<NavMeshAgent>();
+        Agent = GetComponent<NavMeshAgent>();
 
         playerStateMachine.ChangeState(playerStateMachine.PlayerSearchingState);
     }
