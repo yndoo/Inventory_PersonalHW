@@ -46,4 +46,15 @@ public class UIManager : Singleton<UIManager>
         ui.gameObject.SetActive(true);
         ui.Open(contexts);
     }
+
+    public void Hide(EUIType type, params object[] contexts)
+    {
+        UIBase ui = uiList[(int)type];
+        ui.gameObject.SetActive(false);
+    }
+
+    public T GetUI<T>(EUIType type) where T : UIBase
+    {
+        return uiList[(int)type] as T;
+    }
 }

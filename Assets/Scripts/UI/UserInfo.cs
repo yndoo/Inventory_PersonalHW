@@ -35,7 +35,7 @@ public class UserInfo : UIBase
 
     public void UpdateLevelUI(string level, float exp, float maxExp)
     {
-        LevelTxt.text = level.ToString();
+        LevelTxt.text = $"Lv {level.ToString()}";
         ExpFill.fillAmount = exp / maxExp;
         ExpText.text = $"{exp.ToString()} / {maxExp.ToString()}";
     }
