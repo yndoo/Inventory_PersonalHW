@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void AddItem()
     {
-        
-    }
+        ItemData data = GameManager.Instance.Player.CurItemData;
+        if (data == null) return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
     }
 }
