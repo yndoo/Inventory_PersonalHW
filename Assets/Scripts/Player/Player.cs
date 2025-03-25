@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class Player : MonoBehaviour, IPointerEnterHandler
+public class Player : MonoBehaviour
 {
     public PlayerInfo Info;
     public PlayerStat Stat;
@@ -19,11 +19,6 @@ public class Player : MonoBehaviour, IPointerEnterHandler
     private Rigidbody _rigidbody;
 
     public bool IsItemDetected = false;
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Debug.Log("Å×½ºÆ®");
-    }
 
     private void Awake()
     {
