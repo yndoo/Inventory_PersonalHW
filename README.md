@@ -42,8 +42,15 @@ https://play.unity.com/en/games/679402af-f06b-4ee7-8afd-e518a0b5a7ef/webgl-build
 ---
 
 ## 📷 스크린샷
-| Play1 | Play2 | Clear |
-|---|---|---|
-| ![01](https://github.com/user-attachments/assets/ec29a977-58c4-4bce-8a45-ef8f57c18954) | ![02](https://github.com/user-attachments/assets/18212657-721d-4d15-b2f0-3c368674cc76) | ![03](https://github.com/user-attachments/assets/154287dc-f3a4-4c14-b09e-601855fa6a73) |
+| Play1 |
+|---|
+| ![01](https://github.com/user-attachments/assets/ec29a977-58c4-4bce-8a45-ef8f57c18954) |
 
+| Play2 |
+|---|
+| ![02](https://github.com/user-attachments/assets/18212657-721d-4d15-b2f0-3c368674cc76) |
+
+| Clear |
+|---|
+| ![03](https://github.com/user-attachments/assets/154287dc-f3a4-4c14-b09e-601855fa6a73) |
 ---
