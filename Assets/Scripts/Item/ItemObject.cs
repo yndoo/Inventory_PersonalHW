@@ -11,8 +11,9 @@ public class ItemObject : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Player player = other.GetComponentInParent<Player>();
-            player.Info.AddExp(Random.Range(0.5f, 5f));
-            player.Info.AddGold(Random.Range(100f, 1000f));
+            PlayerInfo info = player.Info;
+            info.AddExp(info.Level * Random.Range(0.5f, 5f));
+            info.AddGold(info.Level * Random.Range(100f, 1000f));
 
             if (player.Inventory.AddItem(Data))
             {

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac2c0050e0a6d4383d51a6b3abe3a0, type: 3}
   m_Name: Item_HealingPotion
   m_EditorClassIdentifier: 
-  ItemName: Green Potion
-  ItemDescription: Green Healing Potion
+  ItemName: "\uD790\uB9C1 \uCEA1\uC290"
+  ItemDescription: "\uCCB4\uB825\uC744 \uB192\uC5EC\uC90D\uB2C8\uB2E4."
   Icon: {fileID: 1138098295, guid: a7fab37a3b54ccf4d924922c1a611206, type: 3}
   Material: {fileID: 2100000, guid: 61d8149fe1274ab4eabe0c21d8ecaefd, type: 2}
   Equipables:

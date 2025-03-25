@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac2c0050e0a6d4383d51a6b3abe3a0, type: 3}
   m_Name: Item_PowerPotion
   m_EditorClassIdentifier: 
-  ItemName: Red Potion
-  ItemDescription: 'Power Up : Attack and Critical Rate'
+  ItemName: "\uB808\uB4DC \uCEA1\uC290"
+  ItemDescription: "\uACF5\uACA9\uB825\uACFC \uCE58\uBA85\uD0C0 \uD655\uB960\uC744
+    \uB192\uC5EC\uC90D\uB2C8\uB2E4."
   Icon: {fileID: 1436879699, guid: a7fab37a3b54ccf4d924922c1a611206, type: 3}
   Material: {fileID: 2100000, guid: 86bba7b763e75a14085a096509ffa344, type: 2}
   Equipables:

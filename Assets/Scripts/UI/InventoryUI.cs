@@ -39,6 +39,11 @@ public class InventoryUI : MonoBehaviour
         {
             return false;
         }
+
+        if(LastItemIndex == slots.Count - 1)
+        {
+            GameManager.Instance.GameClear();
+        }
         slots[LastItemIndex + 1].gameObject.SetActive(true);
         slots[LastItemIndex + 1].SetSlot(addItem);
         LastItemIndex++;

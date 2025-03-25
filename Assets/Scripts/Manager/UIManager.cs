@@ -7,6 +7,7 @@ public enum EUIType
     UserInfoUI,
     MenuUI,
     GameUI,
+    ClearMessage,
     End,
 }
 
@@ -14,6 +15,7 @@ public class UIManager : Singleton<UIManager>
 {
     public Canvas canvas;
     public List<UIBase> uiList;
+    public List<GameObject> uiObjectList;
 
     protected override void Awake()
     {
@@ -38,9 +40,17 @@ public class UIManager : Singleton<UIManager>
             go.GetComponent<RectTransform>().SetParent(canvas.transform, false);
 
             UIBase ui = go.GetComponent<UIBase>();
-            ui.Init();
-            go.SetActive(ui.IsInitActive);
-            uiList.Add(ui);
+
+            if(ui == null)
+            {
+                uiObjectList.Add(go);
+            }
+            else
+            {
+                ui.Init();
+                go.SetActive(ui.IsInitActive);
+                uiList.Add(ui);
+            }
         }
     }
 
@@ -65,5 +75,11 @@ public class UIManager : Singleton<UIManager>
     public T GetUI<T>(EUIType type) where T : UIBase 
     {
         return uiList[(int)type] as T;
+    }
+
+    public GameObject GetUIObject(int index)
+    {
+        if(index < 0 || index >= uiObjectList.Count) return null;
+        return uiObjectList[index];
     }
 }

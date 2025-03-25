@@ -27,7 +27,7 @@ public class Player : MonoBehaviour, IPointerEnterHandler
 
     private void Awake()
     {
-        Info = new PlayerInfo("Mandoo", 1, 0f, 10f);
+        Info = new PlayerInfo("Mandoo", 1, 0f, 5f);
         Stat = new PlayerStat(50, 10, 100, 0, 10);
         playerStateMachine = new PlayerStateMachine(this);
         _rigidbody = GetComponent<Rigidbody>();

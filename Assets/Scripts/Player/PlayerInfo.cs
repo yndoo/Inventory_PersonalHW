@@ -7,10 +7,10 @@ using UnityEngine;
 public class PlayerInfo
 {
     public string Name;
-    public int Level;
+    public int Level = 1;
     public float CurExp;
     public float CurGold;
-    public float MaxExp = 10;
+    public float MaxExp;
     public float MaxGold = 50000;
 
     public PlayerInfo(string name, int level, float curExp, float maxExp)
@@ -28,9 +28,15 @@ public class PlayerInfo
         {
             Level += (int)(CurExp / MaxExp);
             CurExp %= MaxExp;
+            MaxExp = Level * 5;
         }
 
         UIManager.Instance.GetUI<UserInfo>(EUIType.UserInfoUI).UpdateLevelUI(Level.ToString(), CurExp, MaxExp);
+
+        if(Level >= 10)
+        {
+            GameManager.Instance.GameClear();
+        }
     }
 
     public void AddGold(float amount)
@@ -39,6 +45,7 @@ public class PlayerInfo
         if(CurGold >= MaxGold)
         {
             CurGold = MaxGold;
+            GameManager.Instance.GameClear();
         }
         UIManager.Instance.GetUI<UserInfo>(EUIType.UserInfoUI).UpdateGoldUI(CurGold, MaxGold);
     }

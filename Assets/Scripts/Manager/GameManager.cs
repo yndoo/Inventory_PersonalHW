@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public Player Player;
+    public bool IsGameCleared;
 
     protected override void Awake()
     {
@@ -22,5 +23,12 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         UIManager.Instance.LoadUI();
+    }
+
+    public void GameClear()
+    {
+        if (IsGameCleared) return;
+        IsGameCleared = true;
+        UIManager.Instance.GetUIObject(0).SetActive(true);
     }
 }

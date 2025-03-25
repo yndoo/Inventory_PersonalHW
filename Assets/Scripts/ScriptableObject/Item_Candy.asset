@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac2c0050e0a6d4383d51a6b3abe3a0, type: 3}
   m_Name: Item_Candy
   m_EditorClassIdentifier: 
-  ItemName: Candy
-  ItemDescription: This is the Cutest Candy
+  ItemName: "\uCE94\uB514"
+  ItemDescription: "\uADC0\uC5EC\uC6CC\uC9C8 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   Icon: {fileID: 424469092, guid: a7fab37a3b54ccf4d924922c1a611206, type: 3}
   Material: {fileID: 2100000, guid: 3c0d5720be408b64fb4b26fb01bb2c64, type: 2}
   Equipables:
