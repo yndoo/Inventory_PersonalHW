@@ -8,9 +8,10 @@ public class ItemObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Player player = other.GetComponentInParent<Player>();
-        if (player != null)
+        if(other.CompareTag("Player"))
         {
+            Player player = other.GetComponentInParent<Player>();
+            player.Info.AddExp(Random.Range(0.5f, 2f));
             if(player.Inventory.AddItem(Data))
             {
                 Destroy(this.gameObject);

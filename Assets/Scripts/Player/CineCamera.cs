@@ -15,5 +15,6 @@ public class CineCamera : MonoBehaviour
     private void Start()
     {
         VCamera.Follow = GameManager.Instance.Player.transform;
+        VCamera.LookAt = GameManager.Instance.Player.transform;
     }
 }

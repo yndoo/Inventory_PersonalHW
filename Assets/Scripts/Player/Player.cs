@@ -18,8 +18,7 @@ public class Player : MonoBehaviour, IPointerEnterHandler
     public NavMeshAgent Agent;
     private Rigidbody _rigidbody;
 
-    // 아이템 먹기 성공 체크
-    public bool HasItem = false;
+    public bool IsItemDetected = false;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -42,9 +41,13 @@ public class Player : MonoBehaviour, IPointerEnterHandler
         playerStateMachine.Update();
     }
 
-    private void FixedUpdate()
+    private void OnTriggerEnter(Collider other)
     {
-        _rigidbody.velocity += transform.forward * 0.5f;
+        if(other.CompareTag("Item")) // 감지존 내부에 아이템 있는 경우 
+        {
+            IsItemDetected = true;
+            playerStateMachine.DetectedPosition = other.transform.position;
+        }
     }
 }
 

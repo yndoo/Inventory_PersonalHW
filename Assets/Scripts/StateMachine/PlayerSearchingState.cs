@@ -20,20 +20,23 @@ public class PlayerSearchingState : PlayerBaseState
     {
         base.Enter();
         // 목표지점 찾아 이동
+        NavMeshAgent agent = stateMachine.Player.Agent;
+        agent.speed = 5f;
+        agent.isStopped = false;
+        
         WanderTargetPos = GetWanderPosition();
-        stateMachine.Player.Agent.SetDestination(WanderTargetPos);
+        agent.SetDestination(WanderTargetPos);
     }
 
     public override void Update()
     {
         base.Update();
-        // TODO : 아이템 감지하면 아이템을 향해서 Move, 아니면 다시 Searching
-        if(stateMachine.Player.HasItem)
+        // 아이템 감지하면 아이템을 향해서 Move, 아니면 다시 Searching
+        if(stateMachine.Player.IsItemDetected)
         {
-            //tateMachine.ChangeState(stateMachine.PlayerMoveState); // TODO
-            stateMachine.ChangeState(stateMachine.PlayerSearchingState);
+            stateMachine.ChangeState(stateMachine.PlayerMoveState);
         }
-        else
+        else if(stateMachine.Player.Agent.remainingDistance < 0.1f)
         {
             stateMachine.ChangeState(stateMachine.PlayerSearchingState);
         }

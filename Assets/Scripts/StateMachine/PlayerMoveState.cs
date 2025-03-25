@@ -11,12 +11,25 @@ public class PlayerMoveState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        // TODO : 아이템 위치 받아놓기
+        // 아이템 위치로 달려가기 
+        stateMachine.Player.Agent.speed = 10f;
+        stateMachine.Player.Agent.isStopped = false;
+        stateMachine.Player.Agent.SetDestination(stateMachine.DetectedPosition);
     }
 
     public override void Update()
     {
         base.Update();
-        // TODO : 아이템으로 달려가기
+        if(stateMachine.Player.Agent.remainingDistance <= 0.1f)
+        {
+            stateMachine.ChangeState(stateMachine.PlayerSearchingState);
+        }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        stateMachine.Player.Agent.isStopped = true;
+        stateMachine.Player.IsItemDetected = false;
     }
 }
