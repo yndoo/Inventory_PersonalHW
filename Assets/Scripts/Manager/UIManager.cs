@@ -82,4 +82,16 @@ public class UIManager : Singleton<UIManager>
         if(index < 0 || index >= uiObjectList.Count) return null;
         return uiObjectList[index];
     }
+
+    public void AllUIOff()
+    {
+        foreach(UIBase ui in uiList)
+        {
+            ui.gameObject.SetActive(false);
+        }
+        foreach (GameObject ui in uiObjectList)
+        {
+            ui.SetActive(false);
+        }
+    }
 }

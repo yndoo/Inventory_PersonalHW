@@ -29,6 +29,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (IsGameCleared) return;
         IsGameCleared = true;
+        UIManager.Instance.AllUIOff();
         UIManager.Instance.GetUIObject(0).SetActive(true);
     }
 }
