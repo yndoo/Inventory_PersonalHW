@@ -6,8 +6,8 @@ using UnityEngine.AI;
 // Wandering에 가까운 느낌으로? 
 public class PlayerSearchingState : PlayerBaseState
 {
-    float MaxWanderDistance = 20f;
-    float MaxDetectDistance = 4f;
+    float MaxWanderDistance = 40f;
+    float MinDetectDistance = 5f;
 
     Vector3 WanderTargetPos = Vector3.zero;
 
@@ -50,7 +50,7 @@ public class PlayerSearchingState : PlayerBaseState
         NavMesh.SamplePosition(curTrans.position + (Random.onUnitSphere * Random.Range(5f, MaxWanderDistance)), out hit, MaxWanderDistance, NavMesh.AllAreas);
 
         int i = 0;
-        while(Vector3.Distance(curTrans.position, hit.position) < MaxDetectDistance)
+        while(Vector3.Distance(curTrans.position, hit.position) < MinDetectDistance)
         {
             NavMesh.SamplePosition(curTrans.position + (Random.onUnitSphere * Random.Range(3f, MaxWanderDistance)), out hit, MaxWanderDistance, NavMesh.AllAreas);
             if (++i >= 20) break;

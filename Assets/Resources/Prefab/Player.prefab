@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4527107319473412975}
   - component: {fileID: 4562553643801508881}
   - component: {fileID: 3004832812838804472}
-  - component: {fileID: 1599939931739754866}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -54,7 +53,9 @@ MonoBehaviour:
     Name: 
     Level: 0
     CurExp: 0
+    CurGold: 0
     MaxExp: 0
+    MaxGold: 0
   Inventory: {fileID: 0}
   HairMeshRenderer: {fileID: 3503804321821194643}
   OriginalMat: {fileID: 2100000, guid: f0841c9f7b4aa414d96700fa6b253f11, type: 2}
@@ -109,27 +110,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!135 &1599939931739754866
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2756027943686023314}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 10
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &3888348309822300785
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +220,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 7, y: 1, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4224193383452070217}

@@ -10,12 +10,14 @@ public class UserInfo : UIBase
     public TextMeshProUGUI UserIdText;
     public TextMeshProUGUI LevelTxt;
     public TextMeshProUGUI ExpText;
+    public TextMeshProUGUI GoldText;
     public Image ExpFill;
+    public Image GoldFill;
 
     public override void Init()
     {
         PlayerInfo p = GameManager.Instance.Player.Info;
-        Open(p.Name, p.Level, p.CurExp, p.MaxExp);
+        Open(p.Name, p.Level, p.CurExp, p.MaxExp, 0, p.MaxGold);
     }
 
     /// <param name="contexts">UserName, Level, CurExp, MaxExp</param>
@@ -32,6 +34,7 @@ public class UserInfo : UIBase
         }
         UpdateUserName(contexts[0].ToString());
         UpdateLevelUI(contexts[1].ToString(), Convert.ToSingle(contexts[2]), Convert.ToSingle(contexts[3]));
+        UpdateGoldUI(Convert.ToSingle(contexts[4]), Convert.ToSingle(contexts[5]));
     }
 
     public void UpdateUserName(string Name)
@@ -44,5 +47,11 @@ public class UserInfo : UIBase
         LevelTxt.text = $"Lv {level.ToString()}";
         ExpFill.fillAmount = exp / maxExp;
         ExpText.text = $"{exp.ToString()} / {maxExp.ToString()}";
+    }
+
+    public void UpdateGoldUI(float curGold, float maxGold)
+    {
+        GoldFill.fillAmount = curGold / maxGold;
+        GoldText.text = $"{curGold.ToString()} / {maxGold.ToString()}";
     }
 }
