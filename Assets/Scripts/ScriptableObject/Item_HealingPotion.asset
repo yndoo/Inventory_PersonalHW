@@ -18,4 +18,4 @@ MonoBehaviour:
   Material: {fileID: 2100000, guid: 61d8149fe1274ab4eabe0c21d8ecaefd, type: 2}
   Equipables:
   - type: 2
-    value: 50
+    value: 2000

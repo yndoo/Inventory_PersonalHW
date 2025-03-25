@@ -19,6 +19,6 @@ MonoBehaviour:
   Material: {fileID: 2100000, guid: 86bba7b763e75a14085a096509ffa344, type: 2}
   Equipables:
   - type: 0
-    value: 20
+    value: 1000
   - type: 3
-    value: 15
+    value: 20
