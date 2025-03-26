@@ -20,7 +20,7 @@ Unity로 개발한 **간단한 방치형 게임(Idle Game)** 프로젝트입니�
 |------|------|
 | 🔄 방치형 캐릭터 | `NavMeshAgent`를 통해 캐릭터가 스스로 랜덤한 목적지로 이동 |
 | 📦 아이템 획득, 장착 | 아이템 획득 시 인벤토리에 저장, 장착 시 외모 변경 |
-| 🧺 인벤토리 시스템 | 슬롯 기반의 간단한 인벤토리 UI 구현 |
+| 🧺 인벤토리 시스템 | 스크롤뷰의 간단한 인벤토리 UI 구현 |
 | 🧠 상태머신 FSM | 캐릭터는 배회하다가 주변에 아이템이 존재하면 다가갑니다. `Searching`, `Move` 상태로 구성된 간단한 FSM을 따릅니다 |
 
 ---  
@@ -53,5 +53,7 @@ https://play.unity.com/en/games/679402af-f06b-4ee7-8afd-e518a0b5a7ef/webgl-build
 
 | Clear |
 |---|
-| ![03](https://github.com/user-attachments/assets/154287dc-f3a4-4c14-b09e-601855fa6a73) |
+| ![04](https://github.com/user-attachments/assets/beb1b7e1-f225-46a2-8007-238f35c7c2a4) |
+| 🔼Level10달성 조건 만족 |
+
 ---
