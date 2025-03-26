@@ -13,7 +13,7 @@ public class ItemObject : MonoBehaviour
             Player player = other.GetComponentInParent<Player>();
             PlayerInfo info = player.Info;
             info.AddExp(info.Level * Random.Range(0.5f, 5f));
-            info.AddGold(info.Level * Random.Range(100f, 1000f));
+            info.AddGold(info.Level * Random.Range(30f, 1000f));
 
             if (player.Inventory.AddItem(Data))
             {

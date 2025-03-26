@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     public List<ItemSlot> slots = new List<ItemSlot>();
     public int LastItemIndex = -1;
     public int CurEquipIndex = -1;
+    public int InventoryCapacity = 24;
     public RectTransform InventoryParent;
 
     // 아이템 정보창
@@ -19,7 +20,7 @@ public class InventoryUI : MonoBehaviour
     {
         GameManager.Instance.Player.Inventory = this;
         GameObject slotPrefab = ResourceManager.Instance.LoadResource("Slot", "Prefab/UI");
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < InventoryCapacity; i++)
         {
             GameObject slotGO = Instantiate(slotPrefab);
             slotGO.GetComponent<RectTransform>().SetParent(InventoryParent.transform, false);
@@ -35,18 +36,19 @@ public class InventoryUI : MonoBehaviour
 
     public bool AddItem(ItemData addItem)
     {
-        if (LastItemIndex + 1 >= slots.Count)
+        if (LastItemIndex + 1 >= InventoryCapacity)
         {
             return false;
         }
 
-        if(LastItemIndex == slots.Count - 1)
-        {
-            GameManager.Instance.GameClear();
-        }
         slots[LastItemIndex + 1].gameObject.SetActive(true);
         slots[LastItemIndex + 1].SetSlot(addItem);
         LastItemIndex++;
+
+        if(LastItemIndex == InventoryCapacity - 1)
+        {
+            GameManager.Instance.GameClear();
+        }
         return true;
     }
 
